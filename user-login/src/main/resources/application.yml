@@ -1,0 +1,17 @@
+spring:
+  application:
+  name: user-login
+
+server:
+  port: 8082
+
+eureka:
+  application:
+    name: USER-LOGIN
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: false  # <== Important: don't prefer IP
+    hostname: localhost  # <== Your custom name
+    instance-id: USER-LOGIN

@@ -1,22 +1,49 @@
 spring:
-  application:
-    name: api-gateway
   cloud:
     gateway:
       routes:
-#        - id: user-login
-#          uri: lb://user-login
-#          predicates:
-#            - Path=/login/**
         - id: band-booking
-          uri: lb://band-booking
+          uri: lb://BAND-BOOKING
           predicates:
-            - Path = /**
+            - Path= /band/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: band-booking
+                fallbackuri: bandBookingService
 
 
+        - id: registration-booking
+          uri: lb://REGISTRATION-BOOKING
+          predicates:
+            - Path= /**
 
-server:
-  port: 8989
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: registration-booking
+                fallbackuri: forward:/registrationService
+  security:
+    user:
+      name: harsh
+      password: harsh
+
+
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: hystrix.stream
+#
+#hystrix:
+#  command:
+#    fallbackcmd:
+#      execution:
+#        isolation:
+#          thread:
+#            timeoutInMilliseconds: 5000
+
+
 
 eureka:
   application:

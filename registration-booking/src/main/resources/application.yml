@@ -1,9 +1,3 @@
-spring:
-  application:
-  name: registration-booking
-server:
-  port: 8081
-
 eureka:
   application:
     name: REGISTRATION-BOOKING

@@ -12,17 +12,30 @@ spring:
                 name: band-booking
                 fallbackuri: bandBookingService
 
+        - id: user-login
+          uri: lb://USER-LOGIN
+          predicates:
+               Path= /auth/**
 
         - id: registration-booking
           uri: lb://REGISTRATION-BOOKING
           predicates:
             - Path= /**
-
           filters:
             - name: CircuitBreaker
               args:
                 name: registration-booking
                 fallbackuri: forward:/registrationService
+
+#        - id: user-login
+#          uri: lb://USER-LOGIN
+#          predicates:
+#            - Path= /auth/**
+#          filters:
+#            - name: CircuitBreaker
+#              args:
+#                name: user-login
+#                fallbackuri: forward:/userlogin
   security:
     user:
       name: harsh

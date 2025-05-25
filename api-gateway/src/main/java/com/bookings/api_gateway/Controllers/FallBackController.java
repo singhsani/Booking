@@ -23,4 +23,10 @@ public class FallBackController {
     public Mono<String> registrationFallBack(){
         return Mono.just("Get Too Long response");
     }
+
+    @RequestMapping("/userlogin")
+    public Mono<String> userloin(){
+        return Mono.just("Get Too Long response");
+    }
+
 }

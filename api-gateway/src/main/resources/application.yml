@@ -2,30 +2,42 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: band-booking
-          uri: lb://BAND-BOOKING
+        - id: citizen-band-booking
+          uri: lb://CITIZEN-BAND-BOOKING
           predicates:
             - Path= /band/**
           filters:
             - name: CircuitBreaker
               args:
-                name: band-booking
+                name: citizen-band-booking
                 fallbackuri: bandBookingService
 
-        - id: user-login
-          uri: lb://USER-LOGIN
+        - id: citizen-user-login
+          uri: lb://CITIZEN-USER-LOGIN
           predicates:
                Path= /auth/**
 
-        - id: registration-booking
-          uri: lb://REGISTRATION-BOOKING
+        - id: citizen-registration-booking
+          uri: lb://CITIZEN-REGISTRATION-BOOKING
           predicates:
             - Path= /**
           filters:
             - name: CircuitBreaker
               args:
-                name: registration-booking
+                name: citizen-registration-booking
                 fallbackuri: forward:/registrationService
+
+        - id: admin-user
+          uri: lb://ADMIN-USERS
+          predicates:
+              - Path= /admin/**
+
+        - id: admin-users-roles
+          uri: lb://ADMIN-USERS-ROLES
+          predicates:
+            - Path= /admin/roles/**
+
+
 
 #        - id: user-login
 #          uri: lb://USER-LOGIN

@@ -1,0 +1,25 @@
+eureka:
+  application:
+    name: CITIZEN-USER-LOGIN
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: false  # <== Important: don't prefer IP
+#    hostname: localhost  # <== Your custom name
+#    instance-id: USER-LOGIN
+
+#logging:
+#  level:
+#    org:
+#      springframework: DEBUG
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/bandsBooking
+    username: postgres
+    password: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true

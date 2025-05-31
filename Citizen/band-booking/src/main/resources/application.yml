@@ -1,0 +1,10 @@
+eureka:
+  application:
+    name: CITIZEN-BAND-BOOKING
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+#  instance:
+#    prefer-ip-address: false  # <== Important: don't prefer IP
+#    hostname: localhost  # <== Your custom name
+#    instance-id: BAND-BOOKING

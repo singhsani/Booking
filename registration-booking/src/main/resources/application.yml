@@ -1,6 +1,0 @@
-eureka:
-  application:
-    name: REGISTRATION-BOOKING
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
